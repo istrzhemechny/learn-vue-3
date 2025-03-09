@@ -2,7 +2,9 @@
   <BlogPost 
     v-for="post in posts" 
     :key="post.id" 
-    v-bind="post" 
+    :id="post.id"
+    v-model:blog-post-title="post.blogPostTitle"
+    v-model:blog-post-content="post.blogPostContent"
     @delete-blog-post="processDeletion"
   ></BlogPost>
 </template>
