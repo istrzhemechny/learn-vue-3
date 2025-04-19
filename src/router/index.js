@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router"
 import Home from "@/views/Home.vue"
 import BlogPosts from "@/views/BlogPosts.vue"
+import Ads from "@/views/Ads.vue"
 import About from "@/views/About.vue"
 import BlogPost from "@/views/BlogPost.vue"
 import BlogPostsGreeting from "@/views/BlogPostsGreeting.vue"
 import NotFound from "@/views/NotFound.vue"
+
 
 //Create a router instance
 const router = createRouter({
@@ -18,7 +20,10 @@ const router = createRouter({
             redirect: {name: 'blogPostsGreeting'},
             children: [
                 {path: '', name:'blogPostsGreeting', component: BlogPostsGreeting },
-                {path:'/blogPosts/:id(\\d+)', name:'blogPost', component: BlogPost }
+                {path:'/blogPosts/:id(\\d+)', name:'blogPost', components:{
+                    default: BlogPost,
+                    sidebar: Ads,
+                } }
             ]},
         {path: '/about', name:'about', component: About},
         {path: '/:pathMatch(.*)*',
